@@ -8,7 +8,7 @@ const github = require('@actions/github')
 // This is a simple sample script for retrieving the file list.
 
 
-async function executeAction(fileId, base64Credential, downloadPath) {
+const executeAction = async (fileId, base64Credential, downloadPath) => {
     try {
 
         const text = Buffer.from(base64Credential, 'base64').toString('ascii')
@@ -30,7 +30,7 @@ async function executeAction(fileId, base64Credential, downloadPath) {
     }
 }
 
-async function downloadFile(drive, fileId, fileName, downloadPath) {
+const downloadFile = async (drive, fileId, fileName, downloadPath) => {
     try {
         const fileMetaData = await drive.files.get({ fileId: fileId })
         console.log(`file metadata: `, fileMetaData.data)
@@ -58,18 +58,20 @@ async function downloadFile(drive, fileId, fileName, downloadPath) {
     }
 }
 
-try {
-    const fileId = core.getInput('file-id')
-    const serviceAccountJson = core.getInput('service-account-json')
-    const downloadPath = core.getInput('download-to')
-    console.log(`file id: ${fileId}`)
-    const filePath = await executeAction(fileId, serviceAccountJson, downloadPath)
-    core.setOutput('file-path', filePath)
-} catch (e) {
-    console.error(e)
-    core.setFailed(e.message)
+const doTask = async () => {
+    try {
+        const fileId = core.getInput('file-id')
+        const serviceAccountJson = core.getInput('service-account-json')
+        const downloadPath = core.getInput('download-to')
+        console.log(`file id: ${fileId}`)
+        const filePath = await executeAction(fileId, serviceAccountJson, downloadPath)
+        core.setOutput('file-path', filePath)
+    } catch (e) {
+        console.error(e)
+        core.setFailed(e.message)
+    }
 }
-// executeAction('1mSw1ZwNxWv_t9Wf8PGrmzCMq5_FFCKaE');
+doTask()
 
 
 

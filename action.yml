@@ -15,4 +15,4 @@ outputs:
     description: 'path of downloaded file'
 runs:
   using: 'node20'
-  main: 'index.js'
+  main: 'dist/index.js'
