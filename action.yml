@@ -1,0 +1,18 @@
+name: 'Download File From Google Drive'
+description: 'Google drive downloader'
+inputs:
+  file-id:
+    description: 'id of file need to be downloaded'
+    required: true
+  service-account-json:
+    description: 'json data of service account credential'
+    required: true
+  download-to:
+    description: 'Store path for download file'
+    required: true
+outputs:
+  file-path:
+    description: 'path of downloaded file'
+runs:
+  using: 'node20'
+  main: 'index.js'
