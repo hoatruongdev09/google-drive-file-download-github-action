@@ -30,7 +30,7 @@ const executeAction = async (fileId, base64Credential, downloadPath) => {
     }
 }
 
-const downloadFile = async (drive, fileId, fileName, downloadPath) => {
+const downloadFile = async (drive, fileId, downloadPath) => {
     try {
         const fileMetaData = await drive.files.get({ fileId: fileId })
         console.log(`file metadata: `, fileMetaData.data)
