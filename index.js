@@ -36,6 +36,10 @@ const downloadFile = async (drive, fileId, downloadPath) => {
         console.log(`file metadata: `, fileMetaData.data)
         const filePath = `${downloadPath}${fileMetaData.data.name}`
         console.log(`file path: ${filePath}`)
+        if (fs.existsSync(downloadPath)) {
+            fs.rmSync(downloadPath, { recursive: true, force: true });
+        }
+        fs.mkdirSync(downloadPath, { recursive: true })
         const fileStream = fs.createWriteStream(filePath)
         console.log('downloading: ' + fileMetaData.data.name)
 
