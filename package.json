@@ -1,7 +1,7 @@
 {
-  "name": "google-drive-download",
+  "name": "google-drive-file-download-github-action",
   "version": "1.0.0",
-  "description": "",
+  "description": "GitHub action to download a file from Google Drive with file id.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,7 +11,6 @@
   "dependencies": {
     "@actions/core": "^1.10.1",
     "@actions/github": "^6.0.0",
-    "@google-cloud/local-auth": "^2.1.0",
-    "googleapis": "^105.0.0"
+    "googleapis": "^131.0.0"
   }
 }
